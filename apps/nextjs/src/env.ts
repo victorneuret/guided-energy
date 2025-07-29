@@ -17,6 +17,8 @@ export const env = createEnv({
     ANTHROPIC_API_KEY: z.string().min(1),
     EXA_API_KEY: z.string().min(1),
     FIRECRAWL_API_KEY: z.string().min(1),
+    BASIC_AUTH_USER: z.string().min(1),
+    BASIC_AUTH_PASSWORD: z.string().min(1),
   },
 
   /**
