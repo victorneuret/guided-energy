@@ -16,7 +16,7 @@ export const DateTools = {
   }),
   "to-local-datetime": tool({
     description:
-      "Convert a batch of UTC datetimes to a local datetime in Paris timezone",
+      "Convert a batch of UTC datetime to a local datetime in Paris timezone",
     parameters: z.object({
       utc: z.array(z.string()).describe("The UTC datetime to convert"),
     }),
@@ -31,9 +31,11 @@ export const DateTools = {
     },
   }),
   "to-utc-datetime": tool({
-    description: "Convert a batch of local datetimes to a UTC datetime",
+    description: "Convert a batch of local datetime to a UTC datetime",
     parameters: z.object({
-      local: z.array(z.string()).describe("The local datetime to convert"),
+      local: z
+        .array(z.string().datetime({ offset: true }))
+        .describe("The list of local datetime to convert"),
     }),
     // eslint-disable-next-line @typescript-eslint/require-await
     execute: async ({ local }) => {

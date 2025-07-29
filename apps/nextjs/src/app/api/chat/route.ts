@@ -1,7 +1,13 @@
 import type { Message } from "ai";
 import type { NextRequest } from "next/server";
 import { anthropic } from "@ai-sdk/anthropic";
-import { convertToCoreMessages, streamText } from "ai";
+import {
+  convertToCoreMessages,
+  InvalidToolArgumentsError,
+  NoSuchToolError,
+  streamText,
+  ToolExecutionError,
+} from "ai";
 
 import { DateTools } from "./date";
 import { ExaSearchTool } from "./exa";
@@ -37,9 +43,22 @@ export async function POST(req: NextRequest) {
         ? await GoogleCalendarTool({ refreshToken: googleCalendarRefreshToken })
         : {}),
     },
-    maxSteps: 5,
+    maxSteps: 10,
     toolCallStreaming: true,
   });
 
-  return result.toDataStreamResponse();
+  return result.toDataStreamResponse({
+    getErrorMessage: (error) => {
+      console.error(error);
+      if (NoSuchToolError.isInstance(error)) {
+        return "The model tried to call a unknown tool.";
+      } else if (InvalidToolArgumentsError.isInstance(error)) {
+        return "The model called a tool with invalid arguments.";
+      } else if (ToolExecutionError.isInstance(error)) {
+        return "An error occurred during tool execution.";
+      } else {
+        return "An unknown error occurred.";
+      }
+    },
+  });
 }

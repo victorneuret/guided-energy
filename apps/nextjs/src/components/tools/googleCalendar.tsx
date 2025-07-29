@@ -1,7 +1,6 @@
 import type { ToolInvocation } from "ai";
 import type { JSX } from "react";
 import Image from "next/image";
-import { redirect, RedirectType } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
