@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { redirect, useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 
-export default function GoogleOAuth() {
+function GoogleOAuth() {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
 
@@ -32,6 +32,12 @@ export default function GoogleOAuth() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+}
 
-  return <div>Loading...</div>;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GoogleOAuth />
+    </Suspense>
+  );
 }
