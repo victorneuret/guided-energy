@@ -40,7 +40,7 @@ This example demonstrates the step-by-step reasoning process used by the LLM to 
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js 15, React 19, TypeScript
-- **AI**: Anthropic Claude 3.5 Haiku
+- **AI**: Anthropic Claude 3.5 Haiku with AI SDK
 - **Search**: Exa API for web search
 - **Web Scraping**: Firecrawl for content extraction
 - **Calendar**: Google Calendar API via Smithery MCP
