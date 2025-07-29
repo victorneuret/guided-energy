@@ -21,9 +21,11 @@ export function DisplayToolData({
   toolInvocation: ToolInvocation;
 }) {
   const toolData =
-    toolDataMapping[toolInvocation.toolName as keyof typeof toolDataMapping](
-      toolInvocation,
-    );
+    toolInvocation.toolName in toolDataMapping
+      ? toolDataMapping[
+          toolInvocation.toolName as keyof typeof toolDataMapping
+        ](toolInvocation)
+      : null;
 
   return (
     <Collapsible className="my-2">
@@ -42,9 +44,12 @@ export function DisplayToolData({
           <span className="sr-only">Toggle</span>
         </Button>
       </CollapsibleTrigger>
-      <CollapsibleContent className="mt-2 rounded-xl bg-muted p-4 shadow-sm">
-        {toolData.args}
-        {toolData.result}
+      <CollapsibleContent className="mt-2 break-words rounded-xl bg-muted p-4 shadow-sm">
+        {toolData?.args ?? JSON.stringify(toolInvocation.args, null, 2)}
+        {toolData?.result ??
+          (toolInvocation.state === "result"
+            ? JSON.stringify(toolInvocation.result, null, 2)
+            : null)}
       </CollapsibleContent>
     </Collapsible>
   );

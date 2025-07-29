@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 
+import Providers from "./providers";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,7 +35,7 @@ export default function RootLayout({
             Your Guided AI Weather Assistant
           </h1>
         </header>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -43,7 +43,11 @@
     "EXA_API_KEY",
     "FIRECRAWL_API_KEY",
     "BASIC_AUTH_USER",
-    "BASIC_AUTH_PASSWORD"
+    "BASIC_AUTH_PASSWORD",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    "GOOGLE_REDIRECT_URI",
+    "SMITHERY_API_KEY"
   ],
   "globalPassThroughEnv": [
     "NODE_ENV",
