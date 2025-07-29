@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,8 +28,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="flex justify-center items-center p-4">
-          <h1 className="text-2xl font-bold">
+        <header className="flex items-center justify-center p-4">
+          <h1 className="text-center text-2xl font-bold">
             Your Guided AI Weather Assistant
           </h1>
         </header>

@@ -38,9 +38,7 @@
       "cache": false
     }
   },
-  "globalEnv": [
-    "ANTHROPIC_API_KEY"
-  ],
+  "globalEnv": ["ANTHROPIC_API_KEY", "EXA_API_KEY", "FIRECRAWL_API_KEY"],
   "globalPassThroughEnv": [
     "NODE_ENV",
     "CI",
