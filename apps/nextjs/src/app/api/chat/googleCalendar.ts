@@ -11,7 +11,7 @@ export const GoogleCalendarTool = async ({
   const serverUrl = createSmitheryUrl(
     "https://server.smithery.ai/@goldk3y/google-calendar-mcp",
     {
-      apiKey: "66963829-1673-4a6d-be68-7abd793850c1",
+      apiKey: env.SMITHERY_API_KEY,
       profile: "vicarious-albatross-8VPCZQ",
       config: {
         clientId: env.GOOGLE_CLIENT_ID,

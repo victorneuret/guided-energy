@@ -1,5 +1,3 @@
-import type { ToolInvocation } from "ai";
-import type { JSX } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +7,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useMutation } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 
@@ -74,34 +71,4 @@ export function GoogleCalendarConnector({
       </DialogContent>
     </Dialog>
   );
-}
-
-export function GoogleCalendarToolData(toolInvocation: ToolInvocation): {
-  args: JSX.Element;
-  result: JSX.Element;
-} {
-  console.log("args", toolInvocation.args);
-  console.log(
-    "result",
-    toolInvocation.state === "result" ? toolInvocation.result : "",
-  );
-  // const args = toolInvocation.args as z.infer<typeof ExaWebSearchSchema>;
-
-  switch (toolInvocation.state) {
-    case "partial-call":
-      return {
-        args: <Skeleton className="h-4 w-full" />,
-        result: <Skeleton className="h-10 w-full" />,
-      };
-    case "call":
-      return {
-        args: <Skeleton className="h-4 w-full" />,
-        result: <Skeleton className="h-10 w-full" />,
-      };
-    case "result":
-      return {
-        args: <Skeleton className="h-4 w-full" />,
-        result: <Skeleton className="h-10 w-full" />,
-      };
-  }
 }
